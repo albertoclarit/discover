@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name:  discover-server
-          image: albertoclarit/discover:0.0.8
+          image: albertoclarit/discover:0.0.9
           ports:
             - containerPort: 8080
 ---

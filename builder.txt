@@ -1,5 +1,5 @@
-docker build  -t albertoclarit/discover:0.0.8 .
-docker push    albertoclarit/discover:0.0.8
+docker build  -t albertoclarit/discover:0.0.9 .
+docker push    albertoclarit/discover:0.0.9
 
 docker run --name tomee -d -p 8080:8080 albertoclarit/discover:0.0.8
 
