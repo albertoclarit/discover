@@ -19,8 +19,6 @@ spec:
           image: albertoclarit/discover:0.0.8
           ports:
             - containerPort: 8080
-          args:
-            - -Djava.awt.headless=true
 ---
 apiVersion: v1
 kind: Service
