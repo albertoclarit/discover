@@ -14,11 +14,9 @@ spec:
       labels:
         app: discover-server
     spec:
-      imagePullSecrets:
-        - name: docker-ace
       containers:
         - name:  discover-server
-          image: docker.ace-mc-bohol.com/hismk2_api:3.0.2
+          image: albertoclarit/discover:0.0.8
           ports:
             - containerPort: 8080
 ---
