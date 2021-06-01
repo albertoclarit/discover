@@ -1,0 +1,51 @@
+  ---
+  No default password for glassfish 5.1
+  https://javaee.github.io/tutorial/usingexamples002.html
+
+
+  set AS_JAVA
+  https://stackoverflow.com/questions/47458119/glassfish-server-does-not-start-nullpointeexception
+  https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-ee-application.html#run_config
+
+
+  Tutorial
+
+  https://stackoverflow.com/questions/38040947/the-type-managedbean-is-deprecated
+  https://javaee.github.io/javaserverfaces-spec/
+  https://github.com/javaee/firstcup-examples
+
+ ==== Tutorials  ====
+  https://mkyong.com/jsf2/jsf-2-0-hello-world-example/
+  https://www.tutorialspoint.com/jsf/index.htm
+  https://www.vogella.com/tutorials/JavaServerFaces/article.html
+  https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+
+  Simple JSF Project - Glassfish 5.1
+   - Bootstrap / Facelet
+
+   - Leaflet
+
+   - Influx/Grafana
+
+
+  JTS  - Shapes
+  GeoTools - GeoServer
+
+
+ - Review
+    Templates Layout
+    Tech
+    Coordinate with Mizel
+    Adhoc
+    Admin / Pages
+    Work with Widget Pages
+
+// Builtin variables in  JSF Page
+
+https://stackoverflow.com/questions/550448/get-request-and-session-parameters-and-attributes-from-jsf-pages
+https://github.com/jcoleman/tomcat-redis-session-manager/issues/101
+https://github.com/redisson/redisson/tree/master/redisson-tomcat
+
+
+mvn --settings settings.xml clean package

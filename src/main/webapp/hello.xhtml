@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>JSF 2.1 Hello World</title>
+</h:head>
+<h:body>
+    <ui:composition template = "templates/common.xhtml">
+
+
+
+        <ui:define name = "content">
+
+            <div class="jumbotron">
+                <h2>JSF 2.0 With Glassfish</h2>
+                <h:form>
+                    <h:inputText value="#{helloBean.name}"></h:inputText>
+                    <h:commandButton value="Welcome Me" styleClass="btn-primary"></h:commandButton>
+                </h:form>
+                <h2>Welcome #{helloBean.name}</h2>
+           </div>
+
+            <hr/>
+            <table class="table" style="width: 500px; margin:auto">
+                <tbody>
+               <!-- <tr>
+                    <td><strong>Version</strong></td>
+                    <td> 0.0.0 </td>
+                </tr>-->
+                <tr>
+                    <td><strong>Session Id</strong></td>
+                    <td> #{helloBean.sessionId}<!-- <h:outputText value="#{session['id']}" />--></td>
+                </tr>
+                <tr>
+                    <td><strong>Host Name</strong></td>
+                    <td>#{helloBean.hostName} </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Stored in Redis: Key(name)</strong></td>
+                     <td><h:outputText value="#{helloBean.redisValue}" /> </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <hr/>
+
+             <br/>
+
+           <!-- <div class="container">
+                <div id="mapid"></div>
+                <br/>
+                <br/>
+
+
+
+                <br/>
+                <h:form>
+                    <h:commandButton value="Open Dialog"  styleClass="btn-primary"
+                                     onclick="initDialog(); return false;"></h:commandButton>
+                </h:form>
+                </div>-->
+
+
+
+
+            <div id="idOfDialogPlaceHolder" class="modal fade" tabindex="-1" role="dialog" style="display: none">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><h:outputText value="#{helloBean.name}"></h:outputText></p>
+
+                            <div id="mapid2" style="width: 300px;height: 400px"></div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+                function initDialog(){
+
+                    try {
+                        $("#idOfDialogPlaceHolder").modal('show')
+                        $('#idOfDialogPlaceHolder').on('shown.bs.modal', function (e) {
+
+                            var container = L.DomUtil.get('mapid2');
+                            if(container != null){
+                                container._leaflet_id = null;
+                            }
+                            window.mymap2 = L.map('mapid2').setView([10.31, 123.89], 13);
+                            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                                attribution: 'Map data &copy; &lt;a href="https://www.openstreetmap.org/copyright">OpenStreetMap&lt;/a> contributors, Imagery © &lt;a href="https://www.mapbox.com/">Mapbox&lt;/a>',
+                                maxZoom: 18,
+                                id: 'mapbox/streets-v11',
+                                tileSize: 512,
+                                zoomOffset: -1,
+                                accessToken: 'pk.eyJ1IjoiYWxiZXJ0b2NsYXJpdCIsImEiOiJja255a21qNHkwMnN1Mm5taHc1YjZoNXJ3In0.gmgd7ElibToBOvsHvCxx5Q'
+                            }).addTo( window.mymap2);
+
+                            var marker = L.marker([10.31, 123.89]).addTo(window.mymap2);
+
+                            var circle = L.circle([10.31, 123.89], {
+                                color: 'red',
+                                fillColor: '#f03',
+                                fillOpacity: 0.5,
+                                radius: 500
+                            }).addTo( window.mymap2);
+
+
+                            marker.bindPopup("&lt;b>Hello world!&lt;/b>&lt;br>I am a popup.").openPopup();
+                            circle.bindPopup("I am a circle.");
+
+                        });
+                        $('#idOfDialogPlaceHolder').on('hidden.bs.modal', function (e) {
+
+                            if(window.mymap2)
+                            {
+                               // window.mymap2.invalidateSize();
+                              //  window.mymap2.off();
+                                window.mymap2.remove();
+
+                            }
+
+                        });
+                    }catch (e){
+                        console.log(e)
+                    }
+
+                    return false;
+                }
+                $( document ).ready(function() {
+
+                    var mymap = L.map('mapid').setView([10.31, 123.89], 13);
+
+                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                        attribution: 'Map data &copy; &lt;a href="https://www.openstreetmap.org/copyright">OpenStreetMap&lt;/a> contributors, Imagery © &lt;a href="https://www.mapbox.com/">Mapbox&lt;/a>',
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        tileSize: 512,
+                        zoomOffset: -1,
+                        accessToken: 'pk.eyJ1IjoiYWxiZXJ0b2NsYXJpdCIsImEiOiJja255a21qNHkwMnN1Mm5taHc1YjZoNXJ3In0.gmgd7ElibToBOvsHvCxx5Q'
+                    }).addTo(mymap);
+
+                    var marker = L.marker([10.31, 123.89]).addTo(mymap);
+
+                    var circle = L.circle([10.31, 123.89], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: 500
+                    }).addTo(mymap);
+
+
+                    marker.bindPopup("&lt;b>Hello world!&lt;/b>&lt;br>I am a popup.").openPopup();
+                    circle.bindPopup("I am a circle.");
+
+                });
+            </script>
+        </ui:define>
+
+
+    </ui:composition>
+
+</h:body>
+</html>

@@ -1,0 +1,13 @@
+version: '2'
+services:
+  redis:
+    image: redis
+    restart: always
+
+
+  discover:
+    image: albertoclarit/discover:0.0.7
+    restart: always
+    ports:
+      - 8080:8080
+

@@ -1,0 +1,71 @@
+discoverVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: discover-server
+  namespace: discover
+  labels:
+    app: discover-server
+spec:
+  selector:
+    matchLabels:
+      app: discover-server
+  template:
+    metadata:
+      labels:
+        app: discover-server
+    spec:
+      imagePullSecrets:
+        - name: docker-ace
+      containers:
+        - name:  discover-server
+          image: albertoclarit/discover:0.0.8
+          ports:
+            - containerPort: 8080
+
+---
+discoverVersion: v1
+kind: Service
+metadata:
+  name: discover-server
+  namespace: discover
+  labels:
+    app: discover-server
+spec:
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8080
+      name: discover-server
+  selector:
+    app: discover-server
+---
+discoverVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name:  discover-ingress
+  namespace: discover
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.org/client-max-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+#    nginx.ingress.kubernetes.io/enable-cors: "true"
+#    nginx.ingress.kubernetes.io/cors-allow-methods: "*"
+#    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+#    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+#    nginx.ingress.kubernetes.io/configuration-snippet: |
+#        more_set_headers "Access-Control-Allow-Origin: $http_origin";
+spec:
+
+  rules:
+    - host: discover.albertoclarit.com
+      http:
+        paths:
+          - pathType: Prefix
+              path: "/discover/(.*)"
+            backend:
+              service:
+                name: discover-server
+                port:
+                  number: 8080

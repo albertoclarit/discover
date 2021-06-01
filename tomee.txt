@@ -1,0 +1,5 @@
+/Users/albertoclarit/Documents/Lanex/KeybridgeWireless/apache-tomee/bin/startup.sh
+/Users/albertoclarit/Documents/Lanex/KeybridgeWireless/apache-tomee/bin/shutdown.sh
+https://github.com/jcoleman/tomcat-redis-session-manager
+
+/Users/albertoclarit/Documents/Lanex/KeybridgeWireless/discover/target/discover-1.0-SNAPSHOT.war

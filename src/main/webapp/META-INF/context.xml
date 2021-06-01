@@ -1,0 +1,4 @@
+<Context>
+<!--    <Manager className="org.redisson.tomcat.RedissonSessionManager"
+             configPath="${catalina.home}/redisson.conf" readMode="MEMORY" updateMode="DEFAULT"/>-->
+</Context>
