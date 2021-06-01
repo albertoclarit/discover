@@ -5,3 +5,6 @@ docker run --name tomee -d -p 8080:8080 albertoclarit/discover:0.0.8
 
 
 docker exec -it tomee   /bin/bash
+
+microk8s kubectl -n discover exec --stdin --tty discover-server-hdft2 -- /bin/bash
+microk8s kubectl exec --stdin --tty discover-server-x4lxc -- /bin/bash

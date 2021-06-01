@@ -53,7 +53,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/discover/(.*)"
+            path: "/"
             backend:
               service:
                 name: discover-server
