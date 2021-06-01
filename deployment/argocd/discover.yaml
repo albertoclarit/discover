@@ -19,6 +19,24 @@ spec:
           image: albertoclarit/discover:0.0.8
           ports:
             - containerPort: 8080
+          args:
+            - -Djava.awt.headless=true
+            - --spring.profiles.active=prod
+            - --spring.datasource.databaseName=hismk2-live
+            - --spring.datasource.serverName=172.16.10.11
+            - --spring.datasource.username=postgres
+            - --spring.datasource.password=6fJ1plLmH0kLKkD4LClOd
+            - --redis.deployment=openshift
+            - --redis.host=redis
+            - --redis.port=6379
+            - --spring.servlet.multipart.max-file-size=50MB
+            - --spring.servlet.multipart.max-request-size=50MB
+            - --spring.servlet.multipart.enabled=true
+            - --spring.http.multipart.max-file-size = 50MB
+            - --spring.http.multipart.max-request-size = 50MB
+            - --mq.host=activemq
+            - -Djava.security.egd=file:/dev/./urandom
+            - --accounting.autopostjournal=true
 ---
 apiVersion: v1
 kind: Service
