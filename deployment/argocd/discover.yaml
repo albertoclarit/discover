@@ -59,7 +59,7 @@ metadata:
 spec:
 
   rules:
-    - host: discover.albertoclarit.com
+    - host: discover.172.104.38.74.nip.io
       http:
         paths:
           - pathType: Prefix
