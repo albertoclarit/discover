@@ -1,7 +1,22 @@
-172.104.36.184
-192.53.174.14
-139.162.8.251
+ 192.46.229.130
+ 139.162.63.130
+ 172.104.161.83
 
 
 
-hostnamectl set-hostname node1
+
+
+hostnamectl set-hostname 172.104.161.83.nip.io
+
+https://www.server-world.info/en/note?os=Ubuntu_20.04&p=microk8s&f=8
+==== Reference for Dashboard=====
+microk8s kubectl port-forward -n kube-system service/kubernetes-dashboard --address 0.0.0.0 10443:443
+192.46.229.130:10443
+
+==== Reference for Grafana=====
+
+microk8s kubectl port-forward -n monitoring service/prometheus-k8s --address 0.0.0.0 9090:9090
+192.46.229.130:9090
+
+microk8s kubectl port-forward -n monitoring service/grafana --address 0.0.0.0 3000:3000
+192.46.229.130:3000
