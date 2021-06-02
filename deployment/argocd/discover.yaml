@@ -50,7 +50,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /discover
 spec:
   rules:
-    - host: discover.172.104.38.74.nip.io
+    - host: discover.albertoclarit.com
       http:
         paths:
           - pathType: Prefix
