@@ -42,6 +42,7 @@ metadata:
   name: discover-ingress
   namespace: discover
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.org/client-max-body-size: "50m"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
@@ -50,6 +51,10 @@ metadata:
 #    nginx.ingress.kubernetes.io/rewrite-target: /discover
 #    nginx.ingress.kubernetes.io/app-root: /discover
 spec:
+  tls:
+    - hosts:
+        - discover.albertoclarit.com
+      secretName: discover-tls-secret
   rules:
     - host: discover.albertoclarit.com
       http:
