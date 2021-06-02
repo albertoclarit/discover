@@ -47,14 +47,14 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/rewrite-target: /discover
+#    nginx.ingress.kubernetes.io/rewrite-target: /discover
 spec:
   rules:
     - host: discover.albertoclarit.com
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: "/discover"
             backend:
               service:
                 name: discover-server
