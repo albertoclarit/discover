@@ -4,9 +4,19 @@ metadata:
   name: argocd-server-ingress
   namespace: argocd
   annotations:
-     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      nginx.org/client-max-body-size: "50m"
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
 
 spec:
+  tls:
+    - hosts:
+        - argocd.albertoclarit.com
+      secretName: argocd-tls-secret
   rules:
     - host: argocd.albertoclarit.com
       http:
