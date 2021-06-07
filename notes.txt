@@ -19,7 +19,8 @@
   https://www.tutorialspoint.com/jsf/index.htm
   https://www.vogella.com/tutorials/JavaServerFaces/article.html
   https://getbootstrap.com/docs/4.0/getting-started/introduction/
-
+  http://incepttechnologies.blogspot.com/p/in-jsf-2.html
+  https://blog.oio.de/2012/05/23/custom-tags-as-an-alternative-to-composite-components-in-jsf/
 
   Simple JSF Project - Glassfish 5.1
    - Bootstrap / Facelet
@@ -49,3 +50,6 @@ https://github.com/redisson/redisson/tree/master/redisson-tomcat
 
 
 mvn --settings settings.xml clean package
+
+https://github.com/kubernetes-client/java/blob/master/examples/examples-release-12/src/main/java/io/kubernetes/client/examples/Example.java
+https://github.com/kubernetes-client/java/wiki/3.-Code-Examples

@@ -10,7 +10,7 @@ import javax.enterprise.context.RequestScoped;
 public class RedisBean
 {
    // private JedisCluster jc = null;
-   Jedis jedis = new Jedis(new HostAndPort("redis", 6379));
+   //Jedis jedis = new Jedis(new HostAndPort("redis", 6379));
 
     /*
 
@@ -26,11 +26,12 @@ public class RedisBean
 
     public  void putValue(String key, String value){
 
-        jedis.set(key, value);
+       // jedis.set(key, value);
 
     }
 
     public String getValue(String key){
-        return jedis.get(key);
+
+     return "";  //return jedis.get(key);
     }
 }
