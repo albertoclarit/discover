@@ -6,8 +6,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:bs5="http://keybridge.ch/ui"
-      xmlns:bs5form="http://xmlns.jcp.org/jsf/composite/bs5/form"
-      xmlns:bs5nav="http://xmlns.jcp.org/jsf/composite/bs5/nav"
+      xmlns:form="http://xmlns.jcp.org/jsf/composite/form"
 >
 
 <h:head>
@@ -31,22 +30,28 @@
                     <!--BUTTONS-->
                     <div class="container mb-4">
                         <h4>Buttons</h4>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-secondary">Secondary</button>
-                        <button type="button" class="btn btn-success">Success</button>
-                        <button type="button" class="btn btn-danger">Danger</button>
-                        <button type="button" class="btn btn-warning">Warning</button>
-                        <button type="button" class="btn btn-info">Info</button>
-                        <button type="button" class="btn btn-light">Light</button>
-                        <button type="button" class="btn btn-dark">Dark</button>
+                        <form:button  colorStyle="primary" value="Primary"/>
+                        <form:button  colorStyle="secondary" value="Secondary"/>
+                        <form:button  colorStyle="success" value="Success"/>
 
-                        <button type="button" class="btn btn-link">Link</button>
+                        <form:button  colorStyle="danger" value="Danger"/>
+                        <form:button  colorStyle="warning" value="Warning"/>
+                        <form:button  colorStyle="info" value="Info"/>
+
+                        <form:button  value="Light"/>
+                        <form:button  colorStyle="dark" value="Dark"/>
+
+                        <form:button  colorStyle="link" value="Link"/>
+
+
                     </div>
                     <div class="container mb-4">
                         <div class="btn-group mb-4" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-success">In service</button>
-                            <button type="button" class="btn btn-warning">Development</button>
-                            <button type="button" class="btn btn-secondary">Stopped</button>
+
+                            <form:button  colorStyle="success" value="In service"/>
+                            <form:button  colorStyle="warning" value="Development"/>
+                            <form:button  colorStyle="secondary" value="Stopped"/>
+
                         </div>
                     </div>
 

@@ -53,3 +53,10 @@ mvn --settings settings.xml clean package
 
 https://github.com/kubernetes-client/java/blob/master/examples/examples-release-12/src/main/java/io/kubernetes/client/examples/Example.java
 https://github.com/kubernetes-client/java/wiki/3.-Code-Examples
+
+
+https://www.byteslounge.com/tutorials/jsf-composite-component-example
+
+Passthrough
+https://docs.oracle.com/javaee/7/tutorial/jsf-facelets009.htm
+https://stackoverflow.com/questions/28137178/what-is-the-difference-between-compositeinsertfacet-and-compositerenderfacet

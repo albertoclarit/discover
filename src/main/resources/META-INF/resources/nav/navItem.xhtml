@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+              xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:f="http://xmlns.jcp.org/jsf/core"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="type"   type="java.lang.String" displayName="Nav Item Type"  />
+        <cc:attribute name="label"   type="java.lang.String" displayName="Label"  />
+        <cc:attribute name="href"   type="java.lang.String" displayName="Hypertext Target"  default="#"/>
+        <cc:attribute name="active" required="false" type="java.lang.Boolean" displayName="true if this is the active page link"/>
+        <cc:attribute name="styleClass"   type="java.lang.String" displayName="Additional classes for this nav"  default="" />
+        <cc:attribute name="disabled" required="false" type="java.lang.Boolean" displayName="true if this link is disabled"/>
+        <cc:attribute name="value"   type="java.lang.String" default="Label" displayName="the link text"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <c:if test="${cc.attrs.type == 'BRAND'}">
+            <a class="navbar-brand" href="${cc.attrs.href}"> <cc:insertChildren/></a>
+        </c:if>
+
+        <c:if test="${cc.attrs.type == 'LINK'}">
+            <li class="nav-item">
+                <h:outputLink styleClass="nav-link #{cc.attrs.active?'active':''}" value="#{cc.attrs.href}" title="#{cc.attrs.label}" disabled="#{cc.attrs.disabled}">
+                <f:passThroughAttribute name="data-toggle" value="tooltip"/>
+                <f:passThroughAttribute name="data-placement" value="right"/>
+                <f:passThroughAttribute name="data-container" value="body"/>
+                     <h:outputText value="#{cc.attrs.value}"/>
+                </h:outputLink>
+
+            </li>
+        </c:if>
+    </cc:implementation>
+</ui:component>

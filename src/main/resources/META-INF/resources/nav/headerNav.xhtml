@@ -5,19 +5,54 @@
               xmlns:cc="http://xmlns.jcp.org/jsf/composite"
               xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
               xmlns:h="http://xmlns.jcp.org/jsf/html"
-              xmlns:f="http://xmlns.jcp.org/jsf/core">
+              xmlns:f="http://xmlns.jcp.org/jsf/core"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
     <!-- INTERFACE -->
     <cc:interface>
-
+        <cc:attribute name="styleClass"   type="java.lang.String" displayName="Additional classes for this nav"  default="" />
+        <cc:attribute name="dark"   type="java.lang.Boolean" displayName="true it is in Dark Mode" default="false"/>
+        <cc:attribute name="primary"   type="java.lang.Boolean" displayName="true is using Primary Colors" default="false"/>
+        <cc:attribute name="fixed"   type="java.lang.Boolean" displayName="true is it is fixed on Top" default="false"/>
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <c:set var="primary" value=""/>
+        <c:if test="${cc.attrs.primary}">
+            <c:set var="primary" value="bg-primary"/>
+        </c:if>
+        <c:set var="dark" value="navbar-light bg-light"/>
+        <c:if test="${cc.attrs.dark}">
+            <c:set var="dark" value="navbar-dark bg-dark"/>
+        </c:if>
+        <c:set var="fixed" value=""/>
+        <c:if test="${cc.attrs.fixed}">
+            <c:set var="fixed" value="fixed-top"/>
+        </c:if>
+        <c:if test="${cc.attrs.fixed}">
+            <style type="text/css">
+                body {
+                    min-height: 75rem;
+                    padding-top: 4.5rem;
+                }
+            </style>
+        </c:if>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <cc:insertChildren/>
+            <nav class="navbar navbar-expand-lg  ${classNames} ${dark} ${fixed} ${primary} ${cc.attrs.styleClass}">
+                <div class="container-fluid">
+                    <cc:insertChildren/>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <cc:renderFacet name="collapsable_menu"/>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </header>
     </cc:implementation>
